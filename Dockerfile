@@ -1,9 +1,14 @@
-FROM ubuntu:latest
+FROM python:2.7
+
 MAINTAINER Felipe Lopes "meyerbro@gmail.com"
-RUN apt-get update -y
-RUN apt-get install -y python-pip python-dev build-essential
-COPY . /app
+
 WORKDIR /app
+
+ADD requirements.txt /app/requirements.txt
 RUN pip install -r requirements.txt
-ENTRYPOINT ["python"]
-CMD ["app.py"]
+
+ADD app.py /app/app.py
+
+EXPOSE 80
+
+CMD ["python", "app.py"]
