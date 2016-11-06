@@ -6,6 +6,50 @@ Flask Restful API project for retrieving countries lists.
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
+This project creates a Restful api to deal with countries lists requests. Returning two types of lists, one for source countries and another for destination countries.
+
+## Example
+
+* source countries:
+
+```
+curl --header "Accept: application/json" http://localhost/v1/countries?target=source
+[
+    {
+        "isoCode": "FR",
+        "name": "France"
+    },
+    {
+        "isoCode": "GB",
+        "name": "United Kingdom"
+    }
+]
+```
+
+* destination countries:
+
+```
+curl --header "Accept: application/json" http://localhost/v1/countries?target=destination
+[
+    {
+        "isoCode": "FR",
+        "name": "France"
+    },
+    {
+        "isoCode": "IE",
+        "name": "Ireland"
+    },
+    {
+        "isoCode": "ES",
+        "name": "Spain"
+    },
+    {
+        "isoCode": "GB",
+        "name": "United Kingdom"
+    }
+]
+```
+
 ## Prerequisites:
 
 * python 2.7
@@ -17,7 +61,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 * Python Virtualenv
 
-## Running flask app:
+## Running flask app (without docker):
 
 ```
 virtualenv -p /usr/bin/python2.7 venv
