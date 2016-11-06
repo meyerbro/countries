@@ -52,31 +52,43 @@ curl --header "Accept: application/json" http://localhost/v1/countries?target=de
 
 ## Prerequisites:
 
+### These are the prerequisites to run the flask restful app, build and run the docker container:
+
+* Vagrant
+
+```
+vagrant up
+vagrant ssh
+```
+
+OBS: Vagrant box port 80 is being mapped by port 8080 on the local machine.
+
+or
+
 * python 2.7 (conservative approach)
+* virtualenv 15.0.2 (or superior)
 * pip 8.1.2 (or superior)
+* pip install -r requirements.txt
 * docker 1.12.1 (or superior)
 * docker-compose 1.8.0 (or superior)
 
-## Recommended:
+## Running flask app (without docker):
 
-* Python Virtualenv
+```
+virtualenv -p /usr/bin/python2.7 venv
+source venv/bin/activate
+pip install -r requirements.txt
+deactivate
+sudo venv/bin/python app.py
+(OBS: running as root because of port 80, never do this in production)
+[How to run a server on port 80 as a normal user on Linux?](http://serverfault.com/a/112798)
+```
 
 ## Testing the python code (app.py):
 
 ```
 source venv/bin/activate
 python app_test.py
-```
-
-## Running flask app (without docker):
-
-```
-virtualenv -p /usr/bin/python2.7 venv
-source venv/bin/activate 
-pip install -r requirements.txt
-sudo venv/bin/python app.py
-(OBS: running as root because of port 80, never do this in production)
-[How to run a server on port 80 as a normal user on Linux?](http://serverfault.com/a/112798)
 ```
 
 ## Bulding the docker image:
@@ -100,11 +112,22 @@ curl --header "Accept: application/json" http://localhost/v1/countries?target=de
 
 ## Testing docker image:
 
+Remember to stop any container running on port 80.
+
+You can stop all containers with:
+```
+docker stop $(docker ps -a -q)
+```
+
 ```
 docker-compose -f docker-compose.test.yml -p ci build
 docker-compose -f docker-compose.test.yml -p ci up -d
 docker logs -f ci_sut_1
 ```
+
+# Travis:
+
+There's an integration with [Travis CI](https://travis-ci.org/) to test the python code.
 
 # Brief discussion of:
 
