@@ -1,4 +1,4 @@
-# countries-restful-api
+# countries (flask restful api app)
 
 Flask Restful API project for retrieving countries lists.
 
@@ -45,9 +45,17 @@ docker-compose -f docker-compose.yml build
 docker-compose -f docker-compose.yml up -d
 ```
 
-## Checking if the docker container is running ok:
+## Checking if the docker container is running:
 
 ```
 curl --header "Accept: application/json" http://localhost/v1/countries?target=source
 curl --header "Accept: application/json" http://localhost/v1/countries?target=destination
+```
+
+## Testing docker image:
+
+```
+docker-compose -f docker-compose.test.yml -p ci build
+docker-compose -f docker-compose.test.yml -p ci up -d
+docker logs -f ci_sut_1
 ```
