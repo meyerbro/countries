@@ -66,11 +66,11 @@ OBS: Vagrant box port 80 is being mapped by port 8080 on the local machine.
 or
 
 * python 2.7 (conservative approach)
-* virtualenv 15.0.2 (or superior)
-* pip 8.1.2 (or superior)
+* virtualenv 15.0.1 (or superior)
+* pip 8.1.1 (or superior)
 * pip install -r requirements.txt
 * docker 1.12.1 (or superior)
-* docker-compose 1.8.0 (or superior)
+* docker-compose 1.5.2 (or superior)
 
 ## Running flask app (without docker):
 
