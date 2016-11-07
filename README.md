@@ -127,7 +127,7 @@ docker logs -f ci_sut_1
 
 # Travis:
 
-There's an integration with [Travis CI](https://travis-ci.org/) to test the python code.
+There's an integration with [Travis CI](https://travis-ci.org/) to test the python code. It's automatically called every time someone creates a Pull Request.
 
 # Brief discussion of:
 
